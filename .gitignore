@@ -5,9 +5,6 @@ obj/
 *.pdb
 *.exe
 
-# Dumped files (IL2CppDumper output)
-Dumped/
-
 # Visual Studio
 .vs/
 *.user

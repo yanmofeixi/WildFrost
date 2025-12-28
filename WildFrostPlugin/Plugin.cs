@@ -14,6 +14,7 @@ namespace WildFrostPlugin
     /// 功能：
     /// 1. 按 + 键增加 100 金币
     /// 2. 禁用战斗中每回合的自动保存
+    /// 3. 无限挂饰槽位 - 移除卡牌挂饰数量限制
     /// </summary>
     [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
     public class Plugin : BasePlugin
@@ -46,6 +47,7 @@ namespace WildFrostPlugin
                 Logger.LogInfo("Plugin initialized successfully!");
                 Logger.LogInfo("  - Press '+' (NumPad) or '=' to gain 100 gold.");
                 Logger.LogInfo("  - In-battle turn-end saves are DISABLED.");
+                Logger.LogInfo("  - UNLIMITED charm slots enabled! (无限挂饰槽位)");
             }
             catch (Exception ex)
             {
@@ -60,14 +62,31 @@ namespace WildFrostPlugin
         {
             try
             {
-                // 获取 BattleSaveSystem.BattleTurnEnd 方法
+                // Patch 1: 禁用战斗中保存
+                PatchBattleSaveSystem();
+                
+                // Patch 2: 无限挂饰槽位
+                PatchUnlimitedCharmSlots();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Failed to apply Harmony patches: {ex}");
+            }
+        }
+        
+        /// <summary>
+        /// 修补 BattleSaveSystem.BattleTurnEnd 方法，禁用战斗中保存
+        /// </summary>
+        private void PatchBattleSaveSystem()
+        {
+            try
+            {
                 var battleSaveSystemType = typeof(BattleSaveSystem);
                 var battleTurnEndMethod = battleSaveSystemType.GetMethod("BattleTurnEnd", 
                     BindingFlags.Public | BindingFlags.Instance);
                 
                 if (battleTurnEndMethod != null)
                 {
-                    // 创建 Prefix patch 来阻止方法执行
                     var prefixMethod = typeof(BattleSavePatches).GetMethod("BattleTurnEnd_Prefix", 
                         BindingFlags.Public | BindingFlags.Static);
                     
@@ -83,7 +102,39 @@ namespace WildFrostPlugin
             }
             catch (Exception ex)
             {
-                Logger.LogError($"Failed to apply Harmony patches: {ex}");
+                Logger.LogError($"Failed to patch BattleSaveSystem: {ex}");
+            }
+        }
+        
+        /// <summary>
+        /// 修补 CardUpgradeData.CheckSlots 方法，实现无限挂饰槽位
+        /// </summary>
+        private void PatchUnlimitedCharmSlots()
+        {
+            try
+            {
+                var cardUpgradeDataType = typeof(CardUpgradeData);
+                var checkSlotsMethod = cardUpgradeDataType.GetMethod("CheckSlots", 
+                    BindingFlags.Public | BindingFlags.Instance);
+                
+                if (checkSlotsMethod != null)
+                {
+                    var prefixMethod = typeof(CharmSlotPatches).GetMethod("CheckSlots_Prefix", 
+                        BindingFlags.Public | BindingFlags.Static);
+                    
+                    _harmony.Patch(checkSlotsMethod, 
+                        prefix: new HarmonyMethod(prefixMethod));
+                    
+                    Logger.LogInfo("Successfully patched CardUpgradeData.CheckSlots - Unlimited charm slots enabled! (无限挂饰槽位)");
+                }
+                else
+                {
+                    Logger.LogWarning("Could not find CardUpgradeData.CheckSlots method to patch.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Failed to patch CardUpgradeData.CheckSlots: {ex}");
             }
         }
     }
@@ -105,12 +156,42 @@ namespace WildFrostPlugin
             return false; // 返回 false 阻止原方法执行
         }
     }
+    
+    /// <summary>
+    /// Harmony Patches for CardUpgradeData
+    /// 用于实现无限挂饰槽位
+    /// </summary>
+    public static class CharmSlotPatches
+    {
+        // CardUpgradeData.Type 枚举值
+        // None = 0, Charm = 1, Token = 2, Crown = 3
+        private const int TYPE_CHARM = 1;
+        
+        /// <summary>
+        /// Prefix patch for CardUpgradeData.CheckSlots
+        /// 只对挂饰类型（Charm）绕过槽位检查，皇冠和令牌保持正常限制
+        /// </summary>
+        [HarmonyPrefix]
+        public static bool CheckSlots_Prefix(CardUpgradeData __instance, ref bool __result)
+        {
+            // 检查当前升级的类型
+            // 如果是挂饰类型，直接返回 true 绕过检查
+            if ((int)__instance.type == TYPE_CHARM)
+            {
+                __result = true;
+                return false; // 跳过原方法
+            }
+            
+            // 对于皇冠、令牌等其他类型，执行原方法进行正常检查
+            return true;
+        }
+    }
 
     public static class PluginInfo
     {
         public const string PLUGIN_GUID = "com.yanmo.WildFrostPlugin";
         public const string PLUGIN_NAME = "WildFrost Plugin";
-        public const string PLUGIN_VERSION = "1.2.0";
+        public const string PLUGIN_VERSION = "1.4.0";
     }
 
     /// <summary>
