@@ -2,6 +2,7 @@ using BepInEx;
 using BepInEx.Logging;
 using BepInEx.Unity.IL2CPP;
 using HarmonyLib;
+using Il2CppInterop.Runtime;
 using Il2CppInterop.Runtime.Injection;
 using System;
 using System.Reflection;
@@ -15,7 +16,7 @@ namespace WildFrostPlugin
     /// 1. 按 + 键增加 100 金币
     /// 2. 禁用战斗中每回合的自动保存
     /// 3. 无限挂饰槽位 - 移除卡牌挂饰数量限制
-    /// 4. 按 - 键切换物品伤害X10倍（战斗中生效）
+    /// 4. 重抽铃永远ready - 随时可以使用重抽铃
     /// </summary>
     [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
     public class Plugin : BasePlugin
@@ -25,8 +26,7 @@ namespace WildFrostPlugin
         // Harmony 实例
         private Harmony _harmony;
         
-        // 物品伤害增强开关
-        internal static bool ItemDamageBoostEnabled = false;
+
 
         public override void Load()
         {
@@ -50,9 +50,9 @@ namespace WildFrostPlugin
                 
                 Logger.LogInfo("Plugin initialized successfully!");
                 Logger.LogInfo("  - Press '+' (NumPad) or '=' to gain 100 gold.");
-                Logger.LogInfo("  - Press '-' (NumPad) or '_' to toggle Item Damage x10.");
                 Logger.LogInfo("  - In-battle turn-end saves are DISABLED.");
                 Logger.LogInfo("  - UNLIMITED charm slots enabled! (无限挂饰槽位)");
+                Logger.LogInfo("  - Press '1' (NumPad) to toggle Redraw Bell always ready (重抽铃永远ready)");
             }
             catch (Exception ex)
             {
@@ -73,8 +73,8 @@ namespace WildFrostPlugin
                 // Patch 2: 无限挂饰槽位
                 PatchUnlimitedCharmSlots();
                 
-                // Patch 3: 物品伤害增强
-                PatchItemDamageBoost();
+                // Patch 3: 重抽铃永远ready
+                PatchRedrawBellAlwaysReady();
             }
             catch (Exception ex)
             {
@@ -145,36 +145,39 @@ namespace WildFrostPlugin
                 Logger.LogError($"Failed to patch CardUpgradeData.CheckSlots: {ex}");
             }
         }
-        
         /// <summary>
-        /// 修补 Hit.Process 方法，实现物品伤害增强
+        /// 修补 RedrawBellSystem，让重抽铃永远ready
         /// </summary>
-        private void PatchItemDamageBoost()
+        private void PatchRedrawBellAlwaysReady()
         {
             try
             {
-                var hitType = typeof(Hit);
-                var processMethod = hitType.GetMethod("Process", 
+                var redrawBellSystemType = typeof(RedrawBellSystem);
+                
+                // Patch 1: Activate 方法 - 在使用后恢复铃铛状态
+                var activateMethod = redrawBellSystemType.GetMethod("Activate", 
                     BindingFlags.Public | BindingFlags.Instance);
                 
-                if (processMethod != null)
+                if (activateMethod != null)
                 {
-                    var prefixMethod = typeof(ItemDamagePatches).GetMethod("Process_Prefix", 
+                    var postfixMethod = typeof(RedrawBellPatches).GetMethod("Activate_Postfix", 
                         BindingFlags.Public | BindingFlags.Static);
                     
-                    _harmony.Patch(processMethod, 
-                        prefix: new HarmonyMethod(prefixMethod));
+                    _harmony.Patch(activateMethod, 
+                        postfix: new HarmonyMethod(postfixMethod));
                     
-                    Logger.LogInfo("Successfully patched Hit.Process - Item damage boost ready! (Press '-' to toggle)");
+                    Logger.LogInfo("Successfully patched RedrawBellSystem.Activate");
                 }
                 else
                 {
-                    Logger.LogWarning("Could not find Hit.Process method to patch.");
+                    Logger.LogWarning("Could not find Activate method.");
                 }
+                
+                Logger.LogInfo("Redraw Bell always ready patches applied! (重抽铃永远ready)");;
             }
             catch (Exception ex)
             {
-                Logger.LogError($"Failed to patch Hit.Process: {ex}");
+                Logger.LogError($"Failed to patch RedrawBellSystem: {ex}");
             }
         }
     }
@@ -226,49 +229,34 @@ namespace WildFrostPlugin
             return true;
         }
     }
-    
     /// <summary>
-    /// Harmony Patches for Hit
-    /// 用于实现物品伤害增强
+    /// Harmony Patches for RedrawBellSystem
+    /// 用于实现重抽铃永远ready
     /// </summary>
-    public static class ItemDamagePatches
+    public static class RedrawBellPatches
     {
-        private const int DAMAGE_MULTIPLIER = 10;
+        /// <summary>
+        /// 开关：是否启用重抽铃永远ready功能
+        /// </summary>
+        public static bool Enabled = false;
         
         /// <summary>
-        /// Prefix patch for Hit.Process
-        /// 在处理伤害前检查攻击者是否为物品，若是则将伤害乘以10
+        /// Postfix patch for RedrawBellSystem.Activate
+        /// 在使用重抽铃后立即恢复其可用状态
         /// </summary>
-        [HarmonyPrefix]
-        public static void Process_Prefix(Hit __instance)
+        [HarmonyPostfix]
+        public static void Activate_Postfix(RedrawBellSystem __instance)
         {
-            if (!Plugin.ItemDamageBoostEnabled)
-                return;
-                
+            if (!Enabled) return;
             try
             {
-                var attacker = __instance.attacker;
-                if (attacker == null || attacker.data == null)
-                    return;
-                
-                var cardType = attacker.data.cardType;
-                if (cardType == null)
-                    return;
-                
-                // 检查是否为物品类型
-                if (cardType.item)
-                {
-                    int originalDamage = __instance.damage;
-                    if (originalDamage > 0)
-                    {
-                        __instance.damage = originalDamage * DAMAGE_MULTIPLIER;
-                        Plugin.Logger.LogInfo($"[ItemBoost] {attacker.data.title}: {originalDamage} -> {__instance.damage} damage");
-                    }
-                }
+                __instance.interactable = true;
+                __instance.BecomeInteractable();
+                __instance.SetCounter(0);
             }
             catch (Exception ex)
             {
-                Plugin.Logger.LogError($"Error in ItemDamagePatches.Process_Prefix: {ex.Message}");
+                Plugin.Logger.LogError($"[RedrawBell] Activate_Postfix error: {ex}");
             }
         }
     }
@@ -277,7 +265,7 @@ namespace WildFrostPlugin
     {
         public const string PLUGIN_GUID = "com.yanmo.WildFrostPlugin";
         public const string PLUGIN_NAME = "WildFrost Plugin";
-        public const string PLUGIN_VERSION = "1.5.0";
+        public const string PLUGIN_VERSION = "1.7.0";
     }
 
     /// <summary>
@@ -299,18 +287,12 @@ namespace WildFrostPlugin
                 TryGainGold(100);
             }
             
-            // - 键切换物品伤害增强
-            if (Input.GetKeyDown(KeyCode.KeypadMinus) || Input.GetKeyDown(KeyCode.Minus))
+            // 1 键切换重抽铃永远ready
+            if (Input.GetKeyDown(KeyCode.Keypad1))
             {
-                ToggleItemDamageBoost();
+                RedrawBellPatches.Enabled = !RedrawBellPatches.Enabled;
+                Plugin.Logger.LogInfo($"[RedrawBell] Always ready: {(RedrawBellPatches.Enabled ? "ON" : "OFF")}");
             }
-        }
-        
-        private void ToggleItemDamageBoost()
-        {
-            Plugin.ItemDamageBoostEnabled = !Plugin.ItemDamageBoostEnabled;
-            string status = Plugin.ItemDamageBoostEnabled ? "ENABLED" : "DISABLED";
-            Plugin.Logger.LogInfo($"[ItemBoost] Item Damage x10: {status}");
         }
 
         private void TryGainGold(int amount)

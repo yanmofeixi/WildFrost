@@ -1,0 +1,571 @@
+[Message: Preloader] BepInEx 6.0.0-be.752 - Wildfrost (2025/12/21 21:28:46)
+[Message: Preloader] Built from commit dd0655fe9d7473b18b0af759448adaf272878fcf
+[Info   :   BepInEx] System platform: Windows 10 64-bit
+[Info   :   BepInEx] Process bitness: 64-bit (x64)
+[Info   :   BepInEx] Running under Unity 2021.3.16f1
+[Info   :   BepInEx] Runtime version: 6.0.7
+[Info   :   BepInEx] Runtime information: .NET 6.0.7
+[Info   : Preloader] 0 patcher plugins loaded
+[Info   : Preloader] 0 assemblies discovered
+[Message:AssemblyPatcher] Executing 0 patch(es)
+[Message:   BepInEx] Chainloader initialized
+[Warning:Il2CppInterop] Class::Init signatures have been exhausted, using a substitute!
+[Info   :Il2CppInterop] Registered mono type Il2CppInterop.Runtime.DelegateSupport+Il2CppToMonoDelegateReference in il2cpp domain
+[Info   :   BepInEx] 1 plugin to load
+[Info   :   BepInEx] Loading [WildFrost Plugin 1.6.0]
+[Info   :WildFrost Plugin] WildFrost Plugin is loading...
+[Info   :WildFrost Plugin] Successfully patched BattleSaveSystem.BattleTurnEnd - In-battle saving disabled!
+[Info   :WildFrost Plugin] Successfully patched CardUpgradeData.CheckSlots - Unlimited charm slots enabled! (无限挂饰槽位)
+[Info   :WildFrost Plugin] Successfully patched RedrawBellSystem.IsCharged - Redraw Bell always ready! (重抽铃永远ready)
+[Info   :Il2CppInterop] Registered mono type WildFrostPlugin.GoldInputHandler in il2cpp domain
+[Info   :WildFrost Plugin] Plugin initialized successfully!
+[Info   :WildFrost Plugin]   - Press '+' (NumPad) or '=' to gain 100 gold.
+[Info   :WildFrost Plugin]   - In-battle turn-end saves are DISABLED.
+[Info   :WildFrost Plugin]   - UNLIMITED charm slots enabled! (无限挂饰槽位)
+[Info   :WildFrost Plugin]   - Redraw Bell ALWAYS READY! (重抽铃永远ready)
+[Message:   BepInEx] Chainloader startup complete
+[Message:     Unity] SceneManager → Loading Scene "Camera"
+[Message:     Unity] SceneManager → Loading Scene "Global"
+[Message:     Unity] Setting Loaded [CameraSway = 1]
+[Message:     Unity] Singleton<CardManager> Created
+[Message:     Unity] Singleton<GameManager> Created
+[Message:     Unity] Singleton<CustomCursor> Created
+[Message:     Unity] Singleton<Names> Created
+[Message:     Unity] Singleton<Config> Created
+[Message:     Unity] v1.2.3 Build: 194
+[Message:     Unity] Singleton<References> Created
+[Message:     Unity] Singleton<StringReference> Created
+[Message:     Unity] Singleton<ActionQueue> Created
+[Message:     Unity] Setting Loaded [ShowFps = False]
+[Message:     Unity] Singleton<Transition> Created
+[Message:     Unity] > AssetLoader Loading Resources...
+[Message:     Unity] > 3 Groups
+[Message:     Unity] > 12 Assets
+[Message:     Unity] > DONE (2ms)
+[Message:     Unity] Singleton<FloatingTextManager> Created
+[Message:     Unity] Steam Initialized signup.leagueoflegends.com (76561198151173998)
+[Message:     Unity] Singleton<Curves> Created
+[Message:     Unity] Setting Loaded [ScreenShake = 1]
+[Message:     Unity] Group [CardType] loaded! (9 items)
+[Message:     Unity] RELEASE = TRUE
+[Message:     Unity] Addressables Init
+[Message:     Unity] "Camera" Loaded
+[Message:     Unity] "Global" Loaded
+[Message:     Unity] Addressables Init Done
+[Message:     Unity] SceneManager → Loading Scene "Saving"
+[Message:     Unity] SceneManager → Loading Scene "Input"
+[Message:     Unity] SceneManager → Loading Scene "Systems"
+[Message:     Unity] SceneManager → Loading Scene "PauseScreen"
+[Message:     Unity] Save Profile Set: Default
+[Message:     Unity] [Save.sav] save file does not need converting
+[Message:     Unity] [Campaign.sav] save file does not need converting
+[Message:     Unity] [CampaignDemo.sav] save file does not need converting
+[Message:     Unity] [Stats.sav] save file does not need converting
+[Message:     Unity] Checking Save.sav for corrupt data...
+[Message:     Unity] Checking Campaign.sav for corrupt data...
+[Message:     Unity] Checking CampaignDemo.sav for corrupt data...
+[Message:     Unity] Checking CampaignPressDemo.sav for corrupt data...
+[Message:     Unity] Checking Battle.sav for corrupt data...
+[Message:     Unity] Checking Stats.sav for corrupt data...
+[Message:     Unity] Checking History.sav for corrupt data...
+[Message:     Unity] ~SAVE FILE CHECKER~
+[Message:     Unity] Loading [Save.sav] (unlocked)...
+[Message:     Unity] Loading Done! (40ms)
+[Message:     Unity] ControllerManager → Assigning Player 0
+[Message:     Unity] Assigning Rewired Player id 0 to Game Player 0
+[Message:     Unity] Player 0 set as lead player
+[Warning:     Unity] Rewired: [Player0] controllers → Mouse
+[Message:     Unity] Singleton<UINavigationSystem> Created
+[Message:     Unity] Singleton<Cursor3d> Created
+[Message:     Unity] Singleton<VirtualPointer> Created
+[Message:     Unity] Audio Settings System → Loading Banks
+[Message:     Unity] Setting Loaded [VolumeMaster = 1]
+[Message:     Unity] Setting Loaded [VolumeMusic = 0]
+[Message:     Unity] Setting Loaded [VolumeSfx = 1]
+[Message:     Unity] Setting Loaded [VolumeAmbience = 1]
+[Message:     Unity] Setting Loaded [Blood = 0]
+[Message:     Unity] Setting Loaded [BloodAmount = 1]
+[Message:     Unity] Setting Loaded [HudAlpha = 1]
+[Message:     Unity] Setting Loaded [HudAlpha = 1]
+[Message:     Unity] Setting Loaded [Language = zh-Hans]
+[Message:     Unity] Setting Loaded [DisplayMode = 2]
+[Message:     Unity] Setting Loaded [Vsync = 1]
+[Message:     Unity] Setting Loaded [TargetFramerate = 2]
+[Message:     Unity] Loading [Save.sav] (cardsDiscovered)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] Loading [Save.sav] (charmsDiscovered)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] [General (WorldSpaceCanvasFitScreenSystem)] UPDATING ~World Space~ CANVAS SIZE
+[Message:     Unity] New Size: (1920, 1080) Aspect: 1.777778
+[Message:     Unity] UI Safe Area: (x:0.00, y:0.00, width:1920.00, height:1080.00)
+[Message:     Unity] Loading [Save.sav] (frameLevels)...
+[Message:     Unity] Loading Done! (4ms)
+[Message:     Unity] Loading [Save.sav] (newFrameLevels)...
+[Message:     Unity] Loading Done! (4ms)
+[Message:     Unity] Setting Loaded [SpecialCardFrames = 1]
+[Message:     Unity] Group [ChallengeData] loaded! (54 items)
+[Message:     Unity] Loading [Save.sav] (completedChallenges)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] Loading [Save.sav] (completedChallenges)...
+[Message:     Unity] Loading Done! (5ms)
+[Message:     Unity] Group [UnlockData] loaded! (67 items)
+[Message:     Unity] Saving [Save.sav] (unlocked)...
+[Message:     Unity] Saving Done! (45ms)
+[Message:     Unity] "Saving" Loaded
+[Message:     Unity] "Input" Loaded
+[Message:     Unity] "Systems" Loaded
+[Message:     Unity] "PauseScreen" Loaded
+[Message:     Unity] CardManager Loading Card Icon Prefabs
+[Message:     Unity] 31 icons loaded
+[Message:     Unity] Setting Loaded [TransitionType = 0]
+[Message:     Unity] SceneManager → Loading Scene "MainMenu"
+[Message:     Unity] Loading [Save.sav] (townNew)...
+[Message:     Unity] Loading Done! (4ms)
+[Message:     Unity] ~ ASSET PRELOADER: 3 group(s) to load
+[Message:     Unity] ~ ASSET PRELOADER: Loading Group [CardData]
+[Message:     Unity] "MainMenu" Loaded
+[Message:     Unity] Loading [Save.sav] (version)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] [General (WorldSpaceCanvasFitScreenSystem)] UPDATING ~World Space~ CANVAS SIZE
+[Message:     Unity] New Size: (1920, 1080) Aspect: 1.777778
+[Message:     Unity] UI Safe Area: (x:0.00, y:0.00, width:1920.00, height:1080.00)
+[Message:     Unity] Loading [Save.sav] (version)...
+[Message:     Unity] Loading Done! (5ms)
+[Message:     Unity] Loading [Save.sav] (progress)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] Loading [Stats.sav] (stats)...
+[Message:     Unity] Loading Done! (7ms)
+[Message:     Unity] ~ ASSET PRELOADER: Group [CardData] Loaded! (8ms)
+[Message:     Unity] ~ ASSET PRELOADER: Loading Group [CampaignNodeType]
+[Message:     Unity] ~ ASSET PRELOADER: Group [CampaignNodeType] Loaded! (107ms)
+[Message:     Unity] ~ ASSET PRELOADER: Loading Group [GameModifierData]
+[Message:     Unity] ~ ASSET PRELOADER: Group [GameModifierData] Loaded! (96ms)
+[Message:     Unity] ~ ASSET PRELOADER: Finished
+[Message:     Unity] Loading [Save.sav] (tutorialProgress)...
+[Message:     Unity] Loading Done! (5ms)
+[Message:     Unity] SceneManager → Loading Scene "Town"
+[Message:     Unity] Setting Loaded [HudAlpha = 1]
+[Message:     Unity] Loading [Save.sav] (completedChallenges)...
+[Message:     Unity] Loading Done! (5ms)
+[Message:     Unity] Loading [Save.sav] (completedChallenges)...
+[Message:     Unity] Loading Done! (5ms)
+[Message:     Unity] Loading [Save.sav] (completedChallenges)...
+[Message:     Unity] Loading Done! (4ms)
+[Message:     Unity] Loading [Save.sav] (unlocked)...
+[Message:     Unity] Loading Done! (4ms)
+[Message:     Unity] Singleton<Town> Created
+[Message:     Unity] Loading [Save.sav] (unlocked)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] Loading [Save.sav] (completedChallenges)...
+[Message:     Unity] Loading Done! (5ms)
+[Message:     Unity] Loading [Save.sav] (unlocked)...
+[Message:     Unity] Loading Done! (2ms)
+[Message:     Unity] Loading [Save.sav] (unlocked)...
+[Message:     Unity] Loading Done! (2ms)
+[Message:     Unity] Loading [Save.sav] (selectedPet)...
+[Message:     Unity] Loading Done! (2ms)
+[Message:     Unity] Loading [Save.sav] (unlocked)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] Loading [Save.sav] (petHutUnlocks)...
+[Message:     Unity] Loading Done! (4ms)
+[Message:     Unity] [PetHut(Clone)] has unchecked 0 unlocks []
+[Message:     Unity] Loading [Save.sav] (unlocked)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] Loading [Save.sav] (dailyPlayed)...
+[Message:     Unity] Loading Done! (4ms)
+[Message:     Unity] Loading [Save.sav] (unlocked)...
+[Message:     Unity] Loading Done! (6ms)
+[Message:     Unity] Loading [Save.sav] (unlocked)...
+[Message:     Unity] Loading Done! (5ms)
+[Message:     Unity] Loading [Save.sav] (unlocked)...
+[Message:     Unity] Loading Done! (2ms)
+[Message:     Unity] Loading [Save.sav] (inventorHutUnlocks)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] [InventorHut(Clone)] has unchecked 0 unlocks []
+[Message:     Unity] Loading [Save.sav] (unlocked)...
+[Message:     Unity] Loading Done! (2ms)
+[Message:     Unity] Loading [Save.sav] (unlocked)...
+[Message:     Unity] Loading Done! (2ms)
+[Message:     Unity] Loading [Save.sav] (icebreakerUnlocks)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] [Icebreakers(Clone)] has unchecked 0 unlocks []
+[Message:     Unity] Loading [Save.sav] (unlocked)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] Loading [Save.sav] (unlocked)...
+[Message:     Unity] Loading Done! (2ms)
+[Message:     Unity] Loading [Save.sav] (hotSpringUnlocks)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] [HotSpring(Clone)] has unchecked 0 unlocks []
+[Message:     Unity] Loading [Save.sav] (unlocked)...
+[Message:     Unity] Loading Done! (2ms)
+[Message:     Unity] Group [GameMode] loaded! (6 items)
+[Message:     Unity] Loading [Save.sav] (unlocked)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] Loading [Save.sav] (unlocked)...
+[Message:     Unity] Loading Done! (2ms)
+[Message:     Unity] Loading [Save.sav] (unlocked)...
+[Message:     Unity] Loading Done! (2ms)
+[Message:     Unity] Loading [Save.sav] (newFinalBoss)...
+[Message:     Unity] Loading Done! (4ms)
+[Message:     Unity] Loading [Save.sav] (townNew)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] Loading [Save.sav] (tutorialTownDone)...
+[Message:     Unity] Loading Done! (2ms)
+[Message:     Unity] Loading [Save.sav] (completedChallenges)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] Steam Achievements:
+[Message:     Unity] → Lone Survivor (True)
+[Message:     Unity] → Snowball Fight (True)
+[Message:     Unity] → Gnome Friend (True)
+[Message:     Unity] → Long Live the King (True)
+[Message:     Unity] → Feed the Beast (True)
+[Message:     Unity] → Balloonist (True)
+[Message:     Unity] → Undefeated (True)
+[Message:     Unity] → Sunbringer (False)
+[Message:     Unity] -→ Requires [Challenge Charm 16]
+[Message:     Unity] → Gnomebringer (True)
+[Message:     Unity] → Hoarder (True)
+[Message:     Unity] → Charmless (False)
+[Message:     Unity] -→ Requires [Challenge Charm 19]
+[Message:     Unity] → Rampage (True)
+[Message:     Unity] → Big Hitter (True)
+[Message:     Unity] → Best Friends (True)
+[Message:     Unity] → Beastmaster (True)
+[Message:     Unity] → Minimalist (False)
+[Message:     Unity] -→ Requires [Challenge Charm 23]
+[Message:     Unity] → Berry Good (True)
+[Message:     Unity] → Snowdweller (True)
+[Message:     Unity] → Shademancer (True)
+[Message:     Unity] → Clunkmaster (True)
+[Message:     Unity] → Bigger Hitter (True)
+[Message:     Unity] → Tough Nut (True)
+[Message:     Unity] → Ritual (True)
+[Message:     Unity] → Toxic (True)
+[Message:     Unity] → One Punch (True)
+[Message:     Unity] → Icemaster (True)
+[Message:     Unity] → High Roller (True)
+[Message:     Unity] "Town" Loaded
+[Message:     Unity] [General (WorldSpaceCanvasFitScreenSystem)] UPDATING ~World Space~ CANVAS SIZE
+[Message:     Unity] New Size: (1920, 1080) Aspect: 1.777778
+[Message:     Unity] UI Safe Area: (x:0.00, y:0.00, width:1920.00, height:1080.00)
+[Message:     Unity] SceneManager → Unloading Scene "MainMenu"
+[Message:     Unity] [0] Cards returned to pool from [MainMenu] (0ms)
+[Message:     Unity] Scene successfully unloaded
+[Message:     Unity] [TribeHut(Clone) Hover]
+[Message:     Unity] [TribeHut(Clone) UnHover]
+[Message:     Unity] [Gate(Clone) Hover]
+[Message:     Unity] Loading [CampaignTutorial.sav] (result)...
+[Message:     Unity] Loading Done! (6ms)
+[Message:     Unity] Loading [Save.sav] (tutorialProgress)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] Loading [Campaign.sav] (result)...
+[Message:     Unity] Loading Done! (5ms)
+[Message:     Unity] Loading [Campaign.sav] (gameVersion)...
+[Message:     Unity] Loading Done! (4ms)
+[Message:     Unity] Loading [Campaign.sav] (seed)...
+[Message:     Unity] Loading Done! (7ms)
+[Message:     Unity] CampaignData (GameMode: GameModeNormal, GameVersion: 194, Seed: 168550676)
+[Message:     Unity] SceneManager → Loading Scene "ContinueRun"
+[Message:     Unity] Setting Loaded [HudAlpha = 1]
+[Message:     Unity] Setting Loaded [HudAlpha = 1]
+[Message:     Unity] Loading [Campaign.sav] (data)...
+[Message:     Unity] Loading Done! (25ms)
+[Message:     Unity] Loading [Campaign.sav] (splatter)...
+[Warning:     Unity] Reference for UnityEngine.Sprite with ID 5829753689650260709 could not be found in Easy Save's reference manager. If you are loading objects dynamically (i.e. objects created at runtime), this warning is expected and can be ignored.
+<i>To disable warnings from Easy Save, go to Window > Easy Save 3 > Settings, and uncheck 'Log Warnings'</i>
+[Message:     Unity] Loading Done! (7ms)
+[Message:     Unity] Loading [Campaign.sav] (startDate)...
+[Message:     Unity] Loading Done! (4ms)
+[Message:     Unity] Group [GameModifierData] loaded! (59 items)
+[Message:     Unity] Group [CardData] loaded! (382 items)
+[Message:     Unity] Group [StatusEffectData] loaded! (598 items)
+[Message:     Unity] Group [CardUpgradeData] loaded! (84 items)
+[Message:     Unity] Group [TraitData] loaded! (31 items)
+[Message:     Unity] Group [CampaignNodeType] loaded! (32 items)
+[Message:     Unity] Group [BattleData] loaded! (30 items)
+[Message:     Unity] Creating [1] splatters on [Card (New)(Clone) (Entity)]
+[Message:     Unity] "ContinueRun" Loaded
+[Message:     Unity] [Gate(Clone) UnHover]
+[Message:     Unity] Updating Data for [Leader1_frenzy]
+[Message:     Unity] Updating Data for [Wolfie]
+[Message:     Unity] Updating Data for [Woodhead]
+[Message:     Unity] Updating Data for [FlameWater]
+[Message:     Unity] Updating Data for [SunRod]
+[Message:     Unity] Updating Data for [SnowStick]
+[Message:     Unity] Updating Data for [SnowStick]
+[Message:     Unity] Updating Data for [Sword]
+[Message:     Unity] Updating Data for [Sword]
+[Message:     Unity] Updating Data for [Sword]
+[Message:     Unity] Updating Data for [Noggin]
+[Message:     Unity] Updating Data for [Mimik]
+[Message:     Unity] Updating Data for [Blue]
+[Message:     Unity] [MultiHit 1] applied to [Leader1_frenzy]
+[Message:     Unity] [Scrap 1] applied to [Woodhead]
+[Message:     Unity] [Damage Equal To Health 1] applied to [Noggin]
+[Message:     Unity] [Scrap 1] applied to [Mimik]
+[Message:     Unity] [Block 1] applied to [Blue]
+[Message:     Unity] [Trigger Against Attacker When Hit 1] applied to [Noggin]
+[Message:     Unity] > [Noggin Smackback] Enabled! Adding effects [Trigger Against Attacker When Hit (StatusEffectTriggerAgainstAttackerWhenHit)]
+[Message:     Unity] Group [KeywordData] loaded! (67 items)
+[Message:     Unity] Keyword for "health" = [Health]
+[Message:     Unity] Keyword for "smackback" = [Smackback]
+[Message:     Unity] Keyword for "health" = [Health]
+[Message:     Unity] Keyword for "smackback" = [Smackback]
+[Message:     Unity] [Trigger When Ally In Row Attacks 1] applied to [Mimik]
+[Message:     Unity] [Hit All Enemies 1] applied to [Blue]
+[Message:     Unity] [Trigger When Self Or Ally Loses Block 1] applied to [Blue]
+[Message:     Unity] Keyword for "snow" = [Snow]
+[Message:     Unity] Keyword for "snow" = [Snow]
+[Message:     Unity] Keyword for "attack" = [Attack]
+[Message:     Unity] Keyword for "attack" = [Attack]
+[Message:     Unity] Keyword for "counter" = [Counter]
+[Message:     Unity] Keyword for "counter" = [Counter]
+[Message:     Unity] Keyword for "snow" = [Snow]
+[Message:     Unity] Keyword for "snow" = [Snow]
+[Message:     Unity] Keyword for "snow" = [Snow]
+[Message:     Unity] Keyword for "snow" = [Snow]
+[Message:     Unity] Keyword for "block" = [Block]
+[Message:     Unity] Keyword for "block" = [Block]
+[Message:     Unity] SceneManager → Loading Scene "Campaign"
+[Message:     Unity] Loading [Save.sav] (challengeProgress)...
+[Message:     Unity] Loading Done! (4ms)
+[Message:     Unity] Loading [Save.sav] (completedChallenges)...
+[Message:     Unity] Loading Done! (2ms)
+[Message:     Unity] Loading [Save.sav] (dynamicRedrawTutorial)...
+[Message:     Unity] Loading Done! (2ms)
+[Message:     Unity] Loading [Save.sav] (dynamicMoveTutorial)...
+[Message:     Unity] Loading Done! (6ms)
+[Message:     Unity] Loading [Save.sav] (dynamicRecallTutorial)...
+[Message:     Unity] Loading Done! (2ms)
+[Message:     Unity] Loading [Save.sav] (dynamicAimlessTutorial)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] Loading [Save.sav] (dynamicReactionTutorial)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] Loading [Save.sav] (tutorialInjuryDone)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] Loading [Save.sav] (tutorialCharmDone)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] Loading [Save.sav] (dynamicReactionTutorial)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] Loading [Save.sav] (tutorialCrownDone)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] Loading [Save.sav] (dynamicWaveBellTutorial)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] "Campaign" Loaded
+[Message:     Unity] [General (WorldSpaceCanvasFitScreenSystem)] UPDATING ~World Space~ CANVAS SIZE
+[Message:     Unity] New Size: (1920, 1080) Aspect: 1.777778
+[Message:     Unity] UI Safe Area: (x:0.00, y:0.00, width:1920.00, height:1080.00)
+[Message:     Unity] Loading [Save.sav] (tutorialInjuryDone)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] SceneManager → Loading Scene "UI"
+[Message:     Unity] SceneManager → Unloading Scene "ContinueRun"
+[Message:     Unity] [Mimik (Entity)] Destroyed! Removing [2] status effects...
+[Message:     Unity] [Scrap 1] removed from [Mimik]
+[Message:     Unity] [Trigger When Ally In Row Attacks 1] removed from [Mimik]
+[Message:     Unity] [Woodhead (Entity)] Destroyed! Removing [1] status effects...
+[Message:     Unity] [Scrap 1] removed from [Woodhead]
+[Message:     Unity] [Blue (Entity)] Destroyed! Removing [3] status effects...
+[Message:     Unity] [Block 1] removed from [Blue]
+[Message:     Unity] [Hit All Enemies 1] removed from [Blue]
+[Message:     Unity] [Trigger When Self Or Ally Loses Block 1] removed from [Blue]
+[Message:     Unity] [Noggin (Entity)] Destroyed! Removing [2] status effects...
+[Message:     Unity] [Damage Equal To Health 1] removed from [Noggin]
+[Message:     Unity] [Trigger Against Attacker When Hit 1] removed from [Noggin]
+[Message:     Unity] [Leader1_frenzy (Entity)] Destroyed! Removing [1] status effects...
+[Message:     Unity] [MultiHit 1] removed from [Leader1_frenzy]
+[Message:     Unity] [13] Cards returned to pool from [ContinueRun] (32ms)
+[Message:     Unity] Setting Loaded [HudAlpha = 1]
+[Message:     Unity] Singleton<Deckpack> Created
+[Message:     Unity] Loading [Save.sav] (unlocked)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] Setting Loaded [HideHandOverlay = False]
+[Message:     Unity] "UI" Loaded
+[Message:     Unity] Backup Created (Profiles/Default/Save.sav) (3 ms)
+[Message:     Unity] Backup Created (Profiles/Default/Stats.sav) (3 ms)
+[Message:     Unity] Backup Created (Profiles/Default/History.sav) (4 ms)
+[Message:     Unity] Loading [Campaign.sav] (result)...
+[Message:     Unity] Loading Done! (5ms)
+[Message:     Unity] Loading [Campaign.sav] (data)...
+[Message:     Unity] Loading Done! (29ms)
+[Message:     Unity] Loading [Campaign.sav] (stats)...
+[Message:     Unity] Loading Done! (2ms)
+[Message:     Unity] Group [ClassData] loaded! (4 items)
+[Message:     Unity] [Player (Player (Basic))] assigned to PlayerDisplay (CharacterDisplay)
+[Message:     Unity] Loading [Campaign.sav] (battleState)...
+[Message:     Unity] Loading Done! (4ms)
+[Message:     Unity] Loading [Campaign.sav] (splatter)...
+[Warning:     Unity] Reference for UnityEngine.Sprite with ID 5829753689650260709 could not be found in Easy Save's reference manager. If you are loading objects dynamically (i.e. objects created at runtime), this warning is expected and can be ignored.
+<i>To disable warnings from Easy Save, go to Window > Easy Save 3 > Settings, and uncheck 'Log Warnings'</i>
+[Message:     Unity] Loading Done! (7ms)
+[Message:     Unity] Loading [Save.sav] (challengeProgress)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] Loading [Campaign.sav] (challengeProgress)...
+[Message:     Unity] Loading Done! (5ms)
+[Message:     Unity] Loading [Campaign.sav] (tutorialData)...
+[Message:     Unity] Loading Done! (4ms)
+[Message:     Unity] Disabling [TutorialSystem]
+[Message:     Unity] SceneManager → Loading Scene "MapNew"
+[Message:     Unity] Scene successfully unloaded
+[Message:     Unity] SceneManager → Unloading Scene "Town"
+[Message:     Unity] [0] Cards returned to pool from [Town] (0ms)
+[Message:     Unity] "MapNew" Loaded
+[Message:     Unity] [General (WorldSpaceCanvasFitScreenSystem)] UPDATING ~World Space~ CANVAS SIZE
+[Message:     Unity] New Size: (1920, 1080) Aspect: 1.777778
+[Message:     Unity] UI Safe Area: (x:0.00, y:0.00, width:1920.00, height:1080.00)
+[Message:     Unity] Loading [Save.sav] (tutorialInjuryDone)...
+[Message:     Unity] Loading Done! (3ms)
+[Message:     Unity] Scene successfully unloaded
+[Message:     Unity] Saving [Campaign.sav] (data)...
+[Message:     Unity] Saving Done! (52ms)
+[Message:     Unity] Backup Created (Profiles/Default/Campaign.sav) (3 ms)
+[Message:     Unity] Saving [Save.sav] (dynamicRedrawTutorial)...
+[Message:     Unity] Saving Done! (14ms)
+[Message:     Unity] Saving [Save.sav] (dynamicMoveTutorial)...
+[Message:     Unity] Saving Done! (16ms)
+[Message:     Unity] Saving [Save.sav] (dynamicRecallTutorial)...
+[Message:     Unity] Saving Done! (17ms)
+[Message:     Unity] Saving [Campaign.sav] (stats)...
+[Message:     Unity] Saving Done! (19ms)
+[Message:     Unity] SceneManager → Loading Scene "Battle"
+[Message:     Unity] Setting Loaded [UnitTargets = 1]
+[Message:     Unity] Setting Loaded [UnitTargets = 1]
+[Message:     Unity] "Battle" Loaded
+[Message:     Unity] Battle Music System → Intensity Set to 0
+[Message:     Unity] [General (WorldSpaceCanvasFitScreenSystem)] UPDATING ~World Space~ CANVAS SIZE
+[Message:     Unity] New Size: (1920, 1080) Aspect: 1.777778
+[Message:     Unity] UI Safe Area: (x:0.00, y:0.00, width:1920.00, height:1080.00)
+[Message:     Unity] Loading [Save.sav] (tutorialInjuryDone)...
+[Message:     Unity] Loading Done! (5ms)
+[Message:     Unity] SceneManager → Unloading Scene "MapNew"
+[Message:     Unity] [0] Cards returned to pool from [MapNew] (0ms)
+[Message:     Unity] Scene successfully unloaded
+[Message:     Unity] BATTLE SET UP
+[Message:     Unity] [Enemy] assigned to EnemyCharacterDisplay (CharacterDisplay)
+[Message:     Unity] Loading [Campaign.sav] (battleState)...
+[Message:     Unity] Loading Done! (6ms)
+[Message:     Unity] Creating [1] splatters on [Wolfie (Entity)]
+[Message:     Unity] Updating Data for [Frostinger]
+[Message:     Unity] Updating Data for [Sporkypine]
+[Message:     Unity] Updating Data for [Mimik]
+[Message:     Unity] Updating Data for [Leader1_frenzy]
+[Message:     Unity] Updating Data for [Wolfie]
+[Message:     Unity] Updating Data for [Woodhead]
+[Message:     Unity] Updating Data for [FlameWater]
+[Message:     Unity] Updating Data for [SunRod]
+[Message:     Unity] Updating Data for [SnowStick]
+[Message:     Unity] Updating Data for [SnowStick]
+[Message:     Unity] Updating Data for [Sword]
+[Message:     Unity] Updating Data for [Sword]
+[Message:     Unity] Updating Data for [Sword]
+[Message:     Unity] Updating Data for [Noggin]
+[Message:     Unity] Updating Data for [Mimik]
+[Message:     Unity] Updating Data for [Blue]
+[Message:     Unity] [Hit All Enemies In Row 1] applied to [Sporkypine]
+[Message:     Unity] > [Sporkypine Barrage] Enabled! Adding effects [Hit All Enemies In Row (StatusEffectChangeTargetMode)]
+[Message:     Unity] Keyword for "barrage" = [Barrage]
+[Message:     Unity] Keyword for "barrage" = [Barrage]
+[Message:     Unity] [Scrap 1] applied to [Mimik]
+[Message:     Unity] [MultiHit 1] applied to [Leader1_frenzy]
+[Message:     Unity] [Scrap 1] applied to [Woodhead]
+[Message:     Unity] [Damage Equal To Health 1] applied to [Noggin]
+[Message:     Unity] [Scrap 1] applied to [Mimik]
+[Message:     Unity] [Block 1] applied to [Blue]
+[Message:     Unity] Keyword for "frost" = [Frost]
+[Message:     Unity] Keyword for "frost" = [Frost]
+[Message:     Unity] Keyword for "snow" = [Snow]
+[Message:     Unity] Keyword for "snow" = [Snow]
+[Message:     Unity] Keyword for "attack" = [Attack]
+[Message:     Unity] Keyword for "attack" = [Attack]
+[Message:     Unity] Keyword for "counter" = [Counter]
+[Message:     Unity] Keyword for "counter" = [Counter]
+[Message:     Unity] Keyword for "snow" = [Snow]
+[Message:     Unity] Keyword for "snow" = [Snow]
+[Message:     Unity] Keyword for "snow" = [Snow]
+[Message:     Unity] Keyword for "snow" = [Snow]
+[Message:     Unity] [Trigger When Ally In Row Attacks 1] applied to [Mimik]
+[Message:     Unity] [Trigger Against Attacker When Hit 1] applied to [Noggin]
+[Message:     Unity] > [Noggin Smackback] Enabled! Adding effects [Trigger Against Attacker When Hit (StatusEffectTriggerAgainstAttackerWhenHit)]
+[Message:     Unity] Keyword for "health" = [Health]
+[Message:     Unity] Keyword for "smackback" = [Smackback]
+[Message:     Unity] Keyword for "health" = [Health]
+[Message:     Unity] Keyword for "smackback" = [Smackback]
+[Message:     Unity] [Trigger When Ally In Row Attacks 1] applied to [Mimik]
+[Message:     Unity] [Hit All Enemies 1] applied to [Blue]
+[Message:     Unity] [Trigger When Self Or Ally Loses Block 1] applied to [Blue]
+[Message:     Unity] Keyword for "block" = [Block]
+[Message:     Unity] Keyword for "block" = [Block]
+[Message:     Unity] Wave (Frostinger (CardData), Sporkypine (CardData), Mimik (CardData)) counter: 5 Created
+[Message:     Unity] Updating Data for [Frostinger]
+[Message:     Unity] Updating Data for [Gobling]
+[Message:     Unity] Updating Data for [Mimik]
+[Message:     Unity] Updating Data for [MiniForge]
+[Message:     Unity] [On Turn Escape To Self 1] applied to [Gobling]
+[Message:     Unity] [Scrap 1] applied to [Mimik]
+[Message:     Unity] [While Active Increase Attack To Allies 2] applied to [MiniForge]
+[Message:     Unity] Keyword for "frost" = [Frost]
+[Message:     Unity] Keyword for "frost" = [Frost]
+[Message:     Unity] [When Hit Apply Gold To Attacker (No Ping) 4] applied to [Gobling]
+[Message:     Unity] [Trigger When Ally In Row Attacks 1] applied to [Mimik]
+[Message:     Unity] [Scrap 1] applied to [MiniForge]
+[Message:     Unity] Keyword for "blings" = [Blings]
+[Message:     Unity] Keyword for "blings" = [Blings]
+[Message:     Unity] Keyword for "attack" = [Attack]
+[Message:     Unity] Keyword for "attack" = [Attack]
+[Message:     Unity] Wave (Frostinger (CardData), Gobling (CardData), Mimik (CardData), MiniForge (CardData)) counter: 5 Created
+[Message:     Unity] Updating Data for [Snowbirb]
+[Message:     Unity] Updating Data for [Frostinger]
+[Message:     Unity] Updating Data for [Frosty]
+[Message:     Unity] [Hit Furthest Target 1] applied to [Snowbirb]
+[Message:     Unity] > [Snowbirb Longshot] Enabled! Adding effects [Hit Furthest Target (StatusEffectChangeTargetMode)]
+[Message:     Unity] Keyword for "snow" = [Snow]
+[Message:     Unity] Keyword for "longshot" = [Longshot]
+[Message:     Unity] Keyword for "snow" = [Snow]
+[Message:     Unity] Keyword for "longshot" = [Longshot]
+[Message:     Unity] [When Hit Apply Frost To RandomEnemy 2] applied to [Frosty]
+[Message:     Unity] Keyword for "frost" = [Frost]
+[Message:     Unity] Keyword for "frost" = [Frost]
+[Message:     Unity] [ImmuneToSnow 1] applied to [Frosty]
+[Message:     Unity] Keyword for "frost" = [Frost]
+[Message:     Unity] Keyword for "frost" = [Frost]
+[Message:     Unity] Wave (Snowbirb (CardData), Frostinger (CardData), Frosty (CardData)) counter: 5 Created
+[Message:     Unity] Battle Phase: Init
+[Message:     Unity] [Frostinger] Removed From [Enemy Reserve Stack]
+[Message:     Unity] [Sporkypine] Removed From [Enemy Reserve Stack]
+[Message:     Unity] [Mimik] Removed From [Enemy Reserve Stack]
+[Message:     Unity] BATTLE START!
+[Message:     Unity] [Leader1_frenzy] Removed From [DrawPocket]
+[Message:     Unity] Battle Setting Seed: 1831473554 Offset: 0
+[Message:     Unity] Pressing [Leader1_frenzy]
+[Message:     Unity] [Leader1_frenzy] Removed From [CardHand]
+[Message:     Unity] [Sword] Removed From [DrawPocket]
+[Message:     Unity] [Sword] Removed From [DrawPocket]
+[Message:     Unity] [SnowStick] Removed From [DrawPocket]
+[Message:     Unity] [FlameWater] Removed From [DrawPocket]
+[Message:     Unity] [SnowStick] Removed From [DrawPocket]
+[Message:     Unity] [Sword] Removed From [DrawPocket]
+[Message:     Unity] Battle Setting Seed: 1831483553 Offset: 0
+[Message:     Unity] Battle Phase: Play
+[Info   :WildFrost Plugin] [Patch] Blocked battle turn 0 save (in-battle saving disabled)
+[Info   :WildFrost Plugin] [RedrawBell] IsCharged patch called - returning true!
+[Message:     Unity] [Sword] Removed From [CardHand]
+[Message:     Unity] DISCARDER → Clearing Status Effects [Sword (Entity)]
+[Message:     Unity] [SnowStick] Removed From [CardHand]
+[Message:     Unity] DISCARDER → Clearing Status Effects [SnowStick (Entity)]
+[Message:     Unity] [FlameWater] Removed From [CardHand]
+[Message:     Unity] DISCARDER → Clearing Status Effects [FlameWater (Entity)]
+[Message:     Unity] [SnowStick] Removed From [CardHand]
+[Message:     Unity] DISCARDER → Clearing Status Effects [SnowStick (Entity)]
+[Message:     Unity] [Sword] Removed From [CardHand]
+[Message:     Unity] DISCARDER → Clearing Status Effects [Sword (Entity)]
+[Message:     Unity] [Sword] Removed From [CardHand]
+[Message:     Unity] DISCARDER → Clearing Status Effects [Sword (Entity)]
+[Message:     Unity] [SunRod] Removed From [DrawPocket]
+[Message:     Unity] [Woodhead] Removed From [DrawPocket]
+[Message:     Unity] [Wolfie] Removed From [DrawPocket]
+[Message:     Unity] [Noggin] Removed From [DrawPocket]
+[Message:     Unity] [Blue] Removed From [DrawPocket]
+[Message:     Unity] [Mimik] Removed From [DrawPocket]
+[Message:     Unity] Battle Phase: Battle
+[Message:     Unity] Battle Setting Seed: 1831483553 Offset: 1
+[Message:     Unity] Battle Phase: Play
+[Info   :WildFrost Plugin] [Patch] Blocked battle turn 1 save (in-battle saving disabled)
