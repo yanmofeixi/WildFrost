@@ -15,6 +15,7 @@ namespace WildFrostPlugin
     /// 1. 按 + 键增加 100 金币
     /// 2. 禁用战斗中每回合的自动保存
     /// 3. 无限挂饰槽位 - 移除卡牌挂饰数量限制
+    /// 4. 按 - 键切换物品伤害X10倍（战斗中生效）
     /// </summary>
     [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
     public class Plugin : BasePlugin
@@ -23,6 +24,9 @@ namespace WildFrostPlugin
         
         // Harmony 实例
         private Harmony _harmony;
+        
+        // 物品伤害增强开关
+        internal static bool ItemDamageBoostEnabled = false;
 
         public override void Load()
         {
@@ -46,6 +50,7 @@ namespace WildFrostPlugin
                 
                 Logger.LogInfo("Plugin initialized successfully!");
                 Logger.LogInfo("  - Press '+' (NumPad) or '=' to gain 100 gold.");
+                Logger.LogInfo("  - Press '-' (NumPad) or '_' to toggle Item Damage x10.");
                 Logger.LogInfo("  - In-battle turn-end saves are DISABLED.");
                 Logger.LogInfo("  - UNLIMITED charm slots enabled! (无限挂饰槽位)");
             }
@@ -67,6 +72,9 @@ namespace WildFrostPlugin
                 
                 // Patch 2: 无限挂饰槽位
                 PatchUnlimitedCharmSlots();
+                
+                // Patch 3: 物品伤害增强
+                PatchItemDamageBoost();
             }
             catch (Exception ex)
             {
@@ -137,6 +145,38 @@ namespace WildFrostPlugin
                 Logger.LogError($"Failed to patch CardUpgradeData.CheckSlots: {ex}");
             }
         }
+        
+        /// <summary>
+        /// 修补 Hit.Process 方法，实现物品伤害增强
+        /// </summary>
+        private void PatchItemDamageBoost()
+        {
+            try
+            {
+                var hitType = typeof(Hit);
+                var processMethod = hitType.GetMethod("Process", 
+                    BindingFlags.Public | BindingFlags.Instance);
+                
+                if (processMethod != null)
+                {
+                    var prefixMethod = typeof(ItemDamagePatches).GetMethod("Process_Prefix", 
+                        BindingFlags.Public | BindingFlags.Static);
+                    
+                    _harmony.Patch(processMethod, 
+                        prefix: new HarmonyMethod(prefixMethod));
+                    
+                    Logger.LogInfo("Successfully patched Hit.Process - Item damage boost ready! (Press '-' to toggle)");
+                }
+                else
+                {
+                    Logger.LogWarning("Could not find Hit.Process method to patch.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Failed to patch Hit.Process: {ex}");
+            }
+        }
     }
     
     /// <summary>
@@ -186,17 +226,64 @@ namespace WildFrostPlugin
             return true;
         }
     }
-
+    
+    /// <summary>
+    /// Harmony Patches for Hit
+    /// 用于实现物品伤害增强
+    /// </summary>
+    public static class ItemDamagePatches
+    {
+        private const int DAMAGE_MULTIPLIER = 10;
+        
+        /// <summary>
+        /// Prefix patch for Hit.Process
+        /// 在处理伤害前检查攻击者是否为物品，若是则将伤害乘以10
+        /// </summary>
+        [HarmonyPrefix]
+        public static void Process_Prefix(Hit __instance)
+        {
+            if (!Plugin.ItemDamageBoostEnabled)
+                return;
+                
+            try
+            {
+                var attacker = __instance.attacker;
+                if (attacker == null || attacker.data == null)
+                    return;
+                
+                var cardType = attacker.data.cardType;
+                if (cardType == null)
+                    return;
+                
+                // 检查是否为物品类型
+                if (cardType.item)
+                {
+                    int originalDamage = __instance.damage;
+                    if (originalDamage > 0)
+                    {
+                        __instance.damage = originalDamage * DAMAGE_MULTIPLIER;
+                        Plugin.Logger.LogInfo($"[ItemBoost] {attacker.data.title}: {originalDamage} -> {__instance.damage} damage");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Plugin.Logger.LogError($"Error in ItemDamagePatches.Process_Prefix: {ex.Message}");
+            }
+        }
+    }
+    
     public static class PluginInfo
     {
         public const string PLUGIN_GUID = "com.yanmo.WildFrostPlugin";
         public const string PLUGIN_NAME = "WildFrost Plugin";
-        public const string PLUGIN_VERSION = "1.4.0";
+        public const string PLUGIN_VERSION = "1.5.0";
     }
 
     /// <summary>
-    /// 金币输入处理器
-    /// 按 + 键增加金币
+    /// 输入处理器
+    /// + 键增加金币
+    /// - 键切换物品伤害增强
     /// </summary>
     public class GoldInputHandler : MonoBehaviour
     {
@@ -206,10 +293,24 @@ namespace WildFrostPlugin
 
         void Update()
         {
+            // + 键增加金币
             if (Input.GetKeyDown(KeyCode.KeypadPlus) || Input.GetKeyDown(KeyCode.Equals))
             {
                 TryGainGold(100);
             }
+            
+            // - 键切换物品伤害增强
+            if (Input.GetKeyDown(KeyCode.KeypadMinus) || Input.GetKeyDown(KeyCode.Minus))
+            {
+                ToggleItemDamageBoost();
+            }
+        }
+        
+        private void ToggleItemDamageBoost()
+        {
+            Plugin.ItemDamageBoostEnabled = !Plugin.ItemDamageBoostEnabled;
+            string status = Plugin.ItemDamageBoostEnabled ? "ENABLED" : "DISABLED";
+            Plugin.Logger.LogInfo($"[ItemBoost] Item Damage x10: {status}");
         }
 
         private void TryGainGold(int amount)
